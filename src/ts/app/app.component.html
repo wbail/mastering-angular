@@ -1,0 +1,57 @@
+<div>
+    <h1>{{ header }}</h1>
+    <br>
+    <h2>{{ message | uppercase }}</h2>
+    <ul>
+        <li *ngFor="let color of colors">{{ color }}</li>
+        <li>{{ newcolor }}</li>
+    </ul>
+    <form>
+        <div>
+            <label for="newcolor">New Color:</label>
+            <input type="text" name="newcolor" id="newcolor" [(ngModel)]="newcolor" (keyup.enter)="addColor()">
+        </div>
+        <button type="button" (click)="addColor()">Add Color</button>
+    </form>
+</div>
+
+<div>
+    <label>Number</label>
+    <label id="someNumber">
+        {{ someNumber | number:'2.2-5' }}
+    </label>
+    <br>
+    <label>Date</label>
+    <label id="someDate">
+        {{ someDate | date:'HH:mm:ss' }}
+    </label>
+    <br>
+    <label>Currency</label>
+    <label id="someCurrency">
+        {{ someCurrency | currency:'BRL':true }}
+    </label>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of people | slice:startPerson:endPerson">
+                <th>{{ person.nome }}</th>
+                <th>{{ person.sobrenome }}</th>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" (click)="prevPage()">Prev</button>
+    <button type="button" (click)="nextPage()">Next</button>
+
+</div>
+
+<div>
+    {{ message }}
+</div>
