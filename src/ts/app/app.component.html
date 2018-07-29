@@ -1,0 +1,40 @@
+<form [formGroup]="profileForm">
+    <h1>Perfil</h1>
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="idnome" formControlName="nome">
+    </div>
+    <div>
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" id="idsobrenome" formControlName="sobrenome">
+    </div>
+
+    <div formArrayName="addressGroups">
+        <div [formGroup]="addressGroup" *ngFor="let addressGroup of profileForm.controls['addressGroups'].controls">
+            <h2>Endereço</h2>
+            <div>
+                <label for="rua">Rua:</label>
+                <input type="text" name="rua" id="idrua" formControlName="rua">
+            </div>
+            <div>
+                <label for="cidade">Cidade:</label>
+                <input type="text" name="cidade" id="idcidade" formControlName="cidade">
+            </div>
+            <div>
+                <label for="uf">Uf:</label>
+                <input type="text" name="uf" id="iduf" formControlName="uf">
+            </div>
+            <div>
+                <label for="cep">Cep:</label>
+                <input type="text" name="cep" id="idcep" formControlName="cep">
+            </div>
+        </div>
+    </div>
+    <button type="button" (click)="addAdressGroup()">Add Address</button>
+
+    <div>
+        <button type="button" (click)="save()">Salvar</button>
+    </div>
+
+    
+</form>
