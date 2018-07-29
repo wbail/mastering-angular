@@ -1,0 +1,35 @@
+<form (ngSubmit)="salvar()">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" [(ngModel)]="contato.nome">
+    </div>
+    <div>
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" name="sobrenome" id="sobrenome" [(ngModel)]="contato.sobrenome">
+    </div>
+    <div>
+        <label for="sexo">Sexo:</label>
+        <select name="sexo" id="sexo" [(ngModel)]="contato.sexo">
+            <option value="">Selecione...</option>
+            <option *ngFor="let sexo of sexo" [value]="sexo[0]">{{ sexo[1] }}</option>
+        </select>
+    </div>
+    <div>
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" id="descricao" cols="30" rows="3" [(ngModel)]="contato.descricao"></textarea>
+    </div>
+    <fieldset ngModelGroup="methodsOfContato">
+        <legend>Methods of Contato</legend>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" [(ngModel)]="contato.email">
+        </div>
+        <div>
+            <label for="telefone">Telefone:</label>
+            <input type="text" name="telefone" id="telefone" [(ngModel)]="contato.telefone">
+        </div>
+    </fieldset>
+
+    <button type="submit">Salvar</button>
+    <button type="reset">Resetar</button>
+</form>

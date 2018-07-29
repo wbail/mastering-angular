@@ -1,11 +1,36 @@
 import { Component } from "@angular/core";
 
+interface ContatoData {
+    nome: string;
+    sobrenome: string;
+    email: string;
+    telefone: string;
+    descricao: string;
+    sexo: string;
+}
+
 @Component({
     selector: "main",
-    template: "<span>{{message}}</span>",
+    template: require("./app.component.html"),
 })
 export class AppComponent {
 
-    public message: string = "Hello World!";
+    public contato: ContatoData = {
+        nome: "",
+        sobrenome: "",
+        telefone: "",
+        email: "",
+        sexo: "",
+        descricao: "",
+    };
+
+    public sexo = [
+        ["M", "Masculino"],
+        ["F", "Feminino"],
+    ];
+    
+    public salvar(contato: ContatoData) {
+        console.log(this.contato);
+    }
 
 }
