@@ -1,32 +1,42 @@
-<form (ngSubmit)="salvar()">
+<form (ngSubmit)="salvar()" [formGroup]="formGroup">
     <div>
         <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome" [(ngModel)]="contato.nome">
+        <input type="text" name="nome" id="nome" required formControlName="contatoControl" [(ngModel)]="contato.nome">
+        <span *ngIf="formGroup.controls.contatoControl.invalid && formGroup.controls.contatoControl.touched">Nome é obrigatório.</span>
     </div>
     <div>
         <label for="sobrenome">Sobrenome:</label>
-        <input type="text" name="sobrenome" id="sobrenome" [(ngModel)]="contato.sobrenome">
+        <input type="text" name="sobrenome" id="sobrenome" required formControlName="contatoControl" [(ngModel)]="contato.sobrenome">
+        <span *ngIf="formGroup.controls.contatoControl.invalid && formGroup.controls.contatoControl.touched">Sobrenome é obrigatório.</span>
     </div>
     <div>
         <label for="sexo">Sexo:</label>
-        <select name="sexo" id="sexo" [(ngModel)]="contato.sexo">
+        <select name="sexo" id="sexo" required formControlName="contatoControl" [(ngModel)]="contato.sexo">
             <option value="">Selecione...</option>
             <option *ngFor="let sexo of sexo" [value]="sexo[0]">{{ sexo[1] }}</option>
         </select>
+        <span *ngIf="formGroup.controls.contatoControl.invalid && formGroup.controls.contatoControl.touched">Sexo é obrigatório.</span>
     </div>
     <div>
         <label for="descricao">Descrição:</label>
-        <textarea name="descricao" id="descricao" cols="30" rows="3" [(ngModel)]="contato.descricao"></textarea>
+        <textarea name="descricao" id="descricao" cols="30" rows="3" required formControlName="contatoControl" [(ngModel)]="contato.descricao"></textarea>
+        <span *ngIf="formGroup.controls.contatoControl.invalid && formGroup.controls.contatoControl.touched">Descrição é obrigatório.</span>
     </div>
     <fieldset ngModelGroup="methodsOfContato">
         <legend>Methods of Contato</legend>
         <div>
             <label for="email">Email:</label>
-            <input type="text" name="email" id="email" [(ngModel)]="contato.email">
+            <input type="text" name="email" id="email" required formControlName="contatoControl" [(ngModel)]="contato.email">
+            <span *ngIf="formGroup.controls.contatoControl.invalid && formGroup.controls.contatoControl.touched">Email é obrigatório.</span>
         </div>
         <div>
             <label for="telefone">Telefone:</label>
-            <input type="text" name="telefone" id="telefone" [(ngModel)]="contato.telefone">
+            <input type="text" name="telefone" id="telefone" required formControlName="contatoControl" pattern="" [(ngModel)]="contato.telefone">
+            <span *ngIf="formGroup.controls.contatoControl.invalid && formGroup.controls.contatoControl.touched">Telefone é obrigatório.</span>
+        </div>
+        <div>
+            <input type="checkbox" [(ngModel)]="contato.notifi" name="notificacao" id="notificacao">
+            <label for="notificacao">Receber notificação por Email</label>
         </div>
     </fieldset>
 
