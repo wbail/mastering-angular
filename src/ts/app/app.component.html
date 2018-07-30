@@ -1,0 +1,18 @@
+<div class="container">
+    <form #contatoForm="ngForm" id="contato-form" novalidate>
+        <fieldset ngModelGroup="address">
+            <div>
+                <label for="rua">Rua:</label>
+                <input type="text" class="form-control" [(ngModel)]="rua" name="rua" required>
+                <span *ngIf="rua.invalid && rua.touched" class="alert alert-danger" role="alert">Rua é obrigatório.</span>
+            </div>
+            <div>
+                <label for="cidade">Cidade:</label>
+                <input type="text" class="form-control" [(ngModel)]="cidade" name="cidade" required>
+                <span *ngIf="cidade.invalid && cidade.touched" class="alert alert-danger" role="alert">Cidade é obrigatório.</span>
+            </div>
+        </fieldset>
+        <br>
+        <button [disabled]="contatoForm.invalid" class="btn btn-primary float-right" type="submit">Salvar</button>
+    </form>
+</div>
